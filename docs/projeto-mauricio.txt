@@ -3,12 +3,12 @@ Projeto: Sistema de PDV para farmácias.
 Funcionalidades:
 	Pagina de login (login.html)
 	- (OK) Encaminhar formulario de login ao BD para validar dados
-	- Abrir página de recuperação de senha, ao clicar no botão
+	- (OK)Abrir página de recuperação de senha, ao clicar no botão
 	- Se acesso com senha aleatória gerada por recuperação, exibir funcao "mudar senha"
 	
 	Pagina de recuperação de senha (recuperacao_senha.html)
-	- Formulario para inserir o email cadastrado do usuario e recuperar a senha
-	- Resposta na página com uma senha aleatória temporária
+	- (OK) Formulario para inserir o email cadastrado do usuario e recuperar a senha
+	- (OK) Resposta na página com uma senha aleatória temporária
 	- Redirecionar para página de login
 	
 	Pagina do venda (tela_operador.html)
