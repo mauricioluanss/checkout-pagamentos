@@ -9,7 +9,7 @@ Funcionalidades:
 	Pagina de recuperação de senha (recuperacao_senha.html)
 	- (OK) Formulario para inserir o email cadastrado do usuario e recuperar a senha
 	- (OK) Resposta na página com uma senha aleatória temporária
-	- Redirecionar para página de login
+	- (OK) Redirecionar para página de login
 	
 	Pagina do venda (tela_operador.html)
 	- Buscar produto no banco de dados a partir do ID
