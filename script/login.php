@@ -19,6 +19,7 @@ if ($resultado->num_rows > 0) {
     exit();
 } else {
     header('Location: login.php?erro=1');
+
 }
 
 $conexao->close();
