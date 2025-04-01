@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAGAMENTO</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 600px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.valor {
+    text-align: center;
+    font-size: 18px;
+}
+
+.metodos_pagamento {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+h2, h3 {
+    margin: 5px 0;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #d9dfe6;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    font-size: 16px;
+    width: 150px;
+    margin: 5px 0;
+}
+
+button:hover {
+    background-color: #65e62a;
+}
+
+#cancelamento {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+#cancelamento:hover {
+    background-color: #cc0000;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="valor">
+            <h2>VALOR A PAGAR:</h2>
+            <H3>R$ 0,00</H3>
+        </div>
+        <div class="metodos_pagamento">
+            <table id="metodos">
+                <h3>MÉTODOS DE PAGAMENTO</h3>
+                <tr>
+                    <td><button>1 - DEBITO</button></td>
+                </tr>
+                <tr>
+                    <td><button>2 - CREDITO (vista)</button></td>
+                </tr>
+                <tr>
+                    <td><button>3 - PIX</button></td>
+                </tr>
+            </table>
+            <button id="cancelamento">Cancelar</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+a pessoa deve selecionar o id do produto e a quiantidade, e clicar em buscar.
+
+funcao do botao 'buscar'
+
+- O botao 'buscar' tera uma funcao que assim que clicado, vai encontrar o produto lá no banco de dados. Essa funcao deve jogar os dados do produto no campo 'textarea'. Os dados serao inseridos por linha, uma abaixo da outra, sem se sobrepor. Ao mesmo tempo, o valor do produto precisa ser contabilizado no campo 'total'.
+
+funcao do botao 'finalizar'
+
+- quando clicado, deve levar até a pagina de pagamento contendo valor total da transação.
+
+
