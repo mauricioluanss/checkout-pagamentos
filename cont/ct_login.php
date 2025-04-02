@@ -12,7 +12,7 @@ $resultado = $conexao->query("SELECT * FROM usuarios WHERE email='$email' AND se
 if ($resultado->num_rows > 0) {
     session_start();
     $_SESSION['logado'] = true;
-    header('Location: ../view/tela_operador.html');
+    header('Location: ../view/vi_checkout.html');
     exit();
 } else {
     //header('Location: login.php?erro=1');
