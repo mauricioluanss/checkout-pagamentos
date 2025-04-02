@@ -1,15 +1,13 @@
 <?php
-/**
- * Script pra recuperação de senha do usuário.
- */
-require_once('config.php');
+/** Script pra recuperação de senha do usuário.*/
+require_once('../conf/config.php');
 
 class senha {
     public $senha;
     public function __construct($senhaTemporaria) {
         $this->senha = $senhaTemporaria;
     }
-    public function getSenha() {
+    public function getSenha(){
         return $this->senha;
     }
 }
@@ -28,7 +26,7 @@ function gerarSenhaAleatoria($conexao, $email) {
     echo "
     <script>
         alert('Sua senha temporária é: $senhaString');
-        window.location.href = '../static/login.html';
+        window.location.href = '../../login.html';
     </script>";
 }
 $conexao->close();
