@@ -5,7 +5,7 @@
 $servidor = "localhost";
 $usuario = "root";
 $senha = "";
-$banco = "sistema_login";
+$banco = "db_pagamento";
 
 //conexão com o banco de dados
 $conexao = new mysqli($servidor, $usuario, $senha, $banco);
@@ -13,7 +13,5 @@ $conexao = new mysqli($servidor, $usuario, $senha, $banco);
 //validação pra conexão
 if ($conexao->connect_error) {
     die("Falha: " . $conexao->connect_error);
-} else {
-    echo "Sucesso";
 }
 ?>

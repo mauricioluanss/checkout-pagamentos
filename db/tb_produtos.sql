@@ -1,4 +1,4 @@
-USE sistema_login;
+USE db_pagamento;
 
 CREATE TABLE produtos (
     id INT AUTO_INCREMENT PRIMARY KEY,
