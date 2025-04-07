@@ -1,11 +1,11 @@
 <?php
-require_once('../conf/config.php');
-
 $nome = $_POST["name"];
 $email = $_POST["email"];
 $senha = $_POST["senha"];
 
+require_once('../conf/config.php');
 $verificacao = $conexao->query("SELECT * FROM usuarios WHERE email='$email'");
+
 if ($verificacao->num_rows > 0) {
     echo "
         <script>
