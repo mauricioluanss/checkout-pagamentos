@@ -98,7 +98,7 @@
         <button type="button" id="adicionar">Adicionar</button>
       </form>
       <div id="total">TOTAL: R$ 0,00</div>
-      <button id="pagar" onclick="window.location.href='vi_pagamento.html'">
+      <button id="pagar" onclick="window.location.href='vi_pagamento_html.php'">
         Finalizar
       </button>
     </div>

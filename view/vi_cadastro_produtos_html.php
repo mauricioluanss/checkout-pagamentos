@@ -80,7 +80,7 @@
   </head>
   <body>
     <div class="container">
-      <form id="cadastro" action="../cont/cadastro_produtos.php" method="post">
+      <form id="cadastro" action="../cont/ct_cadastro_produtos.php" method="post">
         <h2>CADASTRO DE PRODUTOS</h2>
         <label for="produto">Produto:</label>
         <input type="text" name="produto" id="produto" required />
