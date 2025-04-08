@@ -80,33 +80,45 @@
           <tr>
             <th width="50px">ID</th>
             <th>Produto</th>
-            <!--<th>Quantidade</th>-->
             <th width="100px">Preço</th>
           </tr>
         </thead>
-        <tbody id="listaProdutos">
-          <!-- aqui vão ficar as linhas dos produtos deois que puxar do bd
-                ex:  13224 | Dipirona | 1 | 14,90 -->
+
+        <tbody id="listaProdutos" name="listaProdutos">
+
+          <?php foreach ($_SESSION['carrinho'] as $item):?>
+
+            <tr>
+              <td><?= htmlspecialchars($item['id']) ?></td>
+              <td><?= htmlspecialchars($item['produto']) ?></td>
+              <td>R$ <?= number_format($item['preco'], 2, ',', '.') ?></td>
+            </tr>
+            
+          <?php endforeach; ?>
+
         </tbody>
       </table>
+      
+      <?php if (isset($erro)): ?>
+        <p style="color: red;"><?= $erro ?></p>
+      <?php endif; ?>
 
-      <form id="form">
+      <form id="form" method="post">
         <label for="id">ID:</label>
-        <input type="text" id="id" />
-        <!--<label for="qtd">QTD:</label>
-            <input type="number" id="qtd">-->
-        <button type="button" id="adicionar">Adicionar</button>
+        <input type="number" id="id" required/>
+        <button type="submit" id="adicionar">Adicionar</button>
       </form>
+
+      <div id="total">TOTAL: R$ <?= number_format($total, 2, ',', '.') ?></div>
+    
+      
+      <form action="vi_pagamento_html.php" method="POST">
+        <button id="pagar" type="submit">Finalizar</button>
+      </form>
+
+      <!-- funcao acima faz o mesmo
       <div id="total">TOTAL: R$ 0,00</div>
-      <button id="pagar" onclick="window.location.href='vi_pagamento_html.php'">
-        Finalizar
-      </button>
+      <button id="pagar" onclick="window.location.href='vi_pagamento_html.php'"> <!--aqui vai mandar para php-->
     </div>
   </body>
 </html>
-<!--function adicionarProduto(id, nome, qtd, preco) {
-    let lista = document.getElementById("listaProdutos");
-    let item = document.createElement("li");
-    item.textContent = `${qtd}x ${nome} - R$ ${preco}`;
-    lista.appendChild(item);
-}-->
