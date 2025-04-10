@@ -95,7 +95,10 @@ if (!isset($_SESSION["usuario"])) {
         </tr>
       </thead>
       <tbody>
-        <?php
+    <!--laço pra criar a linha na tabela com os dados dos produtos e salvar o valor total dos produtos-->
+      <?php
+        $total = 0;
+
         if (isset($_SESSION['produtos'])) {
           foreach ($_SESSION['produtos'] as $i) {
             echo "
@@ -104,9 +107,10 @@ if (!isset($_SESSION["usuario"])) {
                     <td>{$i['produto']}</td>
                     <td>R$ " . number_format($i['preco'], 2, ',', '.') . "</td>
                 </tr>";
+            $total += $i['preco'];
           }
         }
-        ?>
+      ?>
       </tbody>
     </table>
 
@@ -115,11 +119,16 @@ if (!isset($_SESSION["usuario"])) {
       <input type="number" id="id" name="id" required />
       <button type="submit" id="adicionar">Adicionar</button>
     </form>
+      
+      <!--mostrar o valor total dos produtos-->
+    <div id="total">TOTAL: R$ <?php echo number_format($total, 2, ',', '.'); ?></div>
 
-    <div id="total">TOTAL: R$</div>
 
-    <button id="pagar" type="submit">Finalizar</button>
+    <form action="../view/vi_pagamento_html.php" method="post">
+      <input type="hidden" name="total" value="<?php echo $total; ?>">
+      <button id="pagar" type="submit">Finalizar</button>
+    </form>
+
   </div>
 </body>
-
 </html>

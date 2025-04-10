@@ -83,7 +83,18 @@
     <div class="container">
       <div class="valor">
         <h2>VALOR A PAGAR:</h2>
-        <h3>R$ 0,00</h3>
+        <h3>
+          <!-- trazer o valor total dos produtos da pagina de checkout.-->
+          R$ 
+          <?php 
+            if (isset($_POST['total'])) {
+              echo number_format($_POST['total'], 2, ',', '.');
+            } else {
+              echo '0,00';
+            }
+          ?>
+        </h3>
+
       </div>
       <div class="metodos_pagamento">
         <table id="metodos">
