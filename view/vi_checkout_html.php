@@ -92,28 +92,25 @@ if (!isset($_SESSION["usuario"])) {
           <th>ID</th>
           <th>Produto</th>
           <th>Preço</th>
-          <th>Selecionar</th>
         </tr>
       </thead>
-      <tbody id="listaProdutos">
-        <!-- script com laço pra jogar os produtos dentro da tabela-->
+      <tbody>
         <?php
-        require_once('../conf/config.php');
-        $consulta = $conexao->query("SELECT * FROM produtos");
-
-        while ($linha = $consulta->fetch_assoc()) {
-          echo "<tr>
-                    <td>{$linha['id']}</td>
-                    <td>{$linha['produto']}</td>
-                    <td>R$ " . number_format($linha['preco'], 2, ',', '.') . "</td>
-                    <td><input type='checkbox' name='selecionados[]' value='{$linha['id']}'></td>
-                  </tr>";
+        if (isset($_SESSION['produtos'])) {
+          foreach ($_SESSION['produtos'] as $i) {
+            echo "
+                <tr>
+                    <td>{$i['id']}</td>
+                    <td>{$i['produto']}</td>
+                    <td>R$ " . number_format($i['preco'], 2, ',', '.') . "</td>
+                </tr>";
+          }
         }
         ?>
       </tbody>
     </table>
 
-    <form id="form" method="post">
+    <form action="../cont/ct_checkout.php" id="form" method="post">
       <label for="id">ID:</label>
       <input type="number" id="id" name="id" required />
       <button type="submit" id="adicionar">Adicionar</button>
