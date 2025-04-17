@@ -129,6 +129,9 @@ if (!isset($_SESSION["usuario"])) {
       <button id="pagar" type="submit">Finalizar</button>
     </form>
 
+    <form action="../cont/ct_logout.php" method="post">
+      <button type="submit" id="logout">Logoff</button>
+    </form>
   </div>
 </body>
 </html>

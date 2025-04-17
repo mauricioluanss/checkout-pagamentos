@@ -1,3 +1,6 @@
+		criar uma pagina para consulta os produtos do banco
+
+
 Projeto: Sistema de PDV para farmácias.
 
 Funcionalidades:
@@ -52,3 +55,8 @@ Funcionalidades:
 	tb_transacao
 		ID
 		Dados
+
+
+
+
+		criar uma pagina para consulta os produtos do banco
