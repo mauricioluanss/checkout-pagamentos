@@ -14,7 +14,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CADASTRAR PRODUTOS</title>
     <style>
-      /* Estilo geral para a página */
       body {
         font-family: Arial, sans-serif;
         background-color: #f4f4f4;
@@ -25,7 +24,6 @@
         margin: 0;
       }
 
-      /* Container que centraliza o formulário */
       .container {
         background-color: #fff;
         padding: 20px;
@@ -35,13 +33,11 @@
         max-width: 400px;
       }
 
-      /* Título */
       h2 {
         text-align: center;
         color: #333;
       }
 
-      /* Estilo dos rótulos */
       label {
         font-size: 14px;
         color: #555;
@@ -49,7 +45,6 @@
         display: block;
       }
 
-      /* Estilo dos inputs */
       input {
         width: 100%;
         padding: 10px;
@@ -60,7 +55,6 @@
         font-size: 14px;
       }
 
-      /* Estilo do botão de cadastro */
       button {
         width: 100%;
         padding: 12px;
@@ -80,6 +74,7 @@
   </head>
   <body>
     <div class="container">
+    <!-- Formulario pra cadastrar os produtos no banco via browser. -->
       <form id="cadastro" action="../cont/ct_cadastro_produtos.php" method="post">
         <h2>CADASTRO DE PRODUTOS</h2>
         <label for="produto">Produto:</label>

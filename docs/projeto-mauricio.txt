@@ -20,6 +20,7 @@ Funcionalidades:
 	- Inserir o produto, linha a linha na tabela
 	- Somar automaticamente os valores dos produtos no campo total
 	- Encaminhar para a página de pagamento, com o valor total
+	- (OK) criar uma pagina para consulta os produtos do banco
 	
 	Pagina de pagamento (tela_pagamento)
 	- Mostar o valor total da compra que veio da página anterior (tela_operador.html)
@@ -55,8 +56,3 @@ Funcionalidades:
 	tb_transacao
 		ID
 		Dados
-
-
-
-
-		criar uma pagina para consulta os produtos do banco

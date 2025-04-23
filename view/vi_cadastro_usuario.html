@@ -65,7 +65,7 @@
     </style>
   </head>
   <body>
-    <div class="container">
+    <div class="container">                                                               <!-- Só envia o form se a função retornar 'true'-->
       <form id="cadastro" action="../cont/ct_cadastro_usuario.php" method="post" onsubmit="return verificaSenha()">
         <h2>CADASTRO DE USUÁRIO</h2>
         <label for="name">Nome:</label>
@@ -80,6 +80,7 @@
       </form>
     </div>
     <script>
+      // Função pra validar se as senhas digitadas são iguais.
       function verificaSenha() {
         let senha = document.getElementById('senha').value;
         let senha_confirma = document.getElementById('senha_confirma').value;

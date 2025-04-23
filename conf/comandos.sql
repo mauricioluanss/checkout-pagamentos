@@ -1,8 +1,8 @@
 CREATE DATABASE db_pagamento;
 
--- query pra criar a tabela produtos com as respectivas colunas e tipos.
 USE db_pagamento;
 
+-- tabela produtos
 CREATE TABLE produtos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     produto VARCHAR(100) NOT NULL UNIQUE,
@@ -27,7 +27,7 @@ CREATE TABLE transacoes (
     metodo_pagamento VARCHAR(50) NOT NULL
 );
 
--- Tabela dos produtos da transação (itens vendidos)
+-- Tabela dos produtos vendidos
 CREATE TABLE itens_transacao (
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_transacao INT,

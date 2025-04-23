@@ -2,12 +2,12 @@
 
 session_start();
 
+// Validação se o verbo da requisição é post. Se sim, entra no bloco da lógica.
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $id = $_POST['id'];
 }
 
 require_once("../conf/config.php");
-
 $produto = $conexao->query("SELECT * FROM produtos WHERE id='$id'");
 
 if (!isset($_SESSION['produtos'])) {

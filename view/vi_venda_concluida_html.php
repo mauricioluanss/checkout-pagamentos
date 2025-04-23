@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -52,7 +51,7 @@
   <div class="container">
     <h2>✅ Venda Concluída!</h2>
     <p>O pagamento foi registrado com sucesso.</p>
-    <a href="vi_checkout_html.php">Nova Venda</a>
+    <a href="vi_checkout_html.php">Nova venda</a>
   </div>
 </body>
 </html>
