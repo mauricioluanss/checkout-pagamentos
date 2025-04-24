@@ -104,9 +104,10 @@ if (isset($_SESSION['erro_carrinho'])) {
 <body>
   <div class="container">
     <h2>FARMACIA ZULU - PDV Mauricio 1.0 BETA</h2>
-    <!-- Tabela que mostra os produtos na tela, para consulta do operador. -->
     <div class="produtos-container">
       <h3>Produtos (ID Referência)</h3>
+
+      <!-- Tabela que mostra os produtos na tela para consulta do operador. -->
       <table>
         <thead>
           <tr>
@@ -120,7 +121,7 @@ if (isset($_SESSION['erro_carrinho'])) {
           <?php
           require_once("../conf/config.php");
           $todos_produtos = $conexao->query("SELECT id, produto, preco FROM produtos ORDER BY id");
-
+  
           while ($produto = $todos_produtos->fetch_assoc()) {
             echo "
                   <tr>
@@ -129,6 +130,16 @@ if (isset($_SESSION['erro_carrinho'])) {
                       <td>R$ " . number_format($produto['preco'], 2, ',', '.') . "</td>
                   </tr>";
           }
+          /* if (isset($_SESSION['todos_produtos'])) {
+            foreach ($_SESSION['todos_produtos'] as $x) {
+              echo "
+                  <tr>
+                      <td>{$x['id']}</td>
+                      <td>{$x['produto']}</td>
+                      <td>R$ " . number_format($x['preco'], 2, ',', '.') . "</td>
+                  </tr>";
+            }
+          } */
           ?>
         </tbody>
       </table>
