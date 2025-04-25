@@ -2,7 +2,6 @@ CREATE DATABASE db_pagamento;
 
 USE db_pagamento;
 
--- tabela produtos
 CREATE TABLE produtos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     produto VARCHAR(100) NOT NULL UNIQUE,
@@ -10,7 +9,6 @@ CREATE TABLE produtos (
     preco DECIMAL(10,2) NOT NULL
 );
 
--- Tabela usuarios
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(100) NOT NULL UNIQUE,
@@ -19,7 +17,6 @@ CREATE TABLE usuarios (
     data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
--- Tabela de transações
 CREATE TABLE transacoes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     data DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -27,7 +24,6 @@ CREATE TABLE transacoes (
     metodo_pagamento VARCHAR(50) NOT NULL
 );
 
--- Tabela dos produtos vendidos
 CREATE TABLE itens_transacao (
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_transacao INT,
@@ -37,7 +33,7 @@ CREATE TABLE itens_transacao (
     FOREIGN KEY (id_transacao) REFERENCES transacoes(id)
 );
 
--- query para inserir produtos no banco.
+
 INSERT INTO produtos (produto, quantidade, preco)
 VALUES
 ('Paracetamol 500mg', 100, 5.99),
