@@ -19,7 +19,7 @@ $resultado = $conexao->query("SELECT * FROM usuarios WHERE email='$email' AND se
 if ($resultado->num_rows > 0) {
   session_start();
   $_SESSION["usuario"] = $resultado;
-  header('Location: ../view/vi_checkout_html.php');
+  header('Location: ../view/vi_tab_produtos_checkout_html.php');
 } else {
   echo "<script>
               alert('Email ou senha incorretos!');

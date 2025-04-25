@@ -9,7 +9,7 @@ if (!isset($_SESSION["usuario"])) {
 }
 
 // Esse bloco valida se a variável de sessão abaixo existe. Caso sim, executa o alert.
-// a lógica do motivo para esse bloco está em 'ct_registra_pagamento.php'.
+// a lógica do motivo para esse bloco está em 'ct_form_pagamento.php'.
 if (isset($_SESSION['erro_carrinho'])) {
   echo "<script>alert('Carrinho vazio! Adicione produtos antes de finalizar.');</script>";
   unset($_SESSION['erro_carrinho']);
@@ -156,7 +156,6 @@ if (isset($_SESSION['erro_carrinho'])) {
       </thead>
       <tbody>
         <!-- Lógica pra inserir os produtos na tabela (carrinho), e guardar a soma do valor total. -->
-        <!-- A parte que realiza a consulta dos produtos no banco está em 'ct_checkout.php'. -->
         <?php
         $total = 0;
 
@@ -175,8 +174,8 @@ if (isset($_SESSION['erro_carrinho'])) {
       </tbody>
     </table>
 
-    <!-- Botão pra buscar o produto no banco pelo ID. Aciona o 'ct_checkout.php'. -->
-    <form action="../cont/ct_checkout.php" id="form" method="post">
+    <!-- Botão pra buscar o produto no banco pelo ID. -->
+    <form action="../cont/ct_tab_produtos_checkout.php" id="form" method="post">
       <label for="id">ID:</label>
       <input type="number" id="id" name="id" required />
       <button type="submit" id="adicionar">Adicionar</button>
@@ -187,7 +186,7 @@ if (isset($_SESSION['erro_carrinho'])) {
       TOTAL: R$ <?php echo number_format($total, 2, ',', '.'); ?>
     </div>
 
-    <!-- Botão pra enviar o valor total para página de pagamento 'vi_pagamento_html.php'. -->
+    <!-- Botão pra enviar o valor total para página de pagamento. -->
     <form action="../view/vi_form_pagamento_html.php" method="post">
       <input type="hidden" name="total" value="<?php echo $total; ?>">
       <button id="pagar" type="submit">Finalizar</button>

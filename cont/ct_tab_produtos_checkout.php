@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 // Validação se o verbo da requisição é post. Se sim, entra no bloco da lógica.
@@ -18,6 +17,6 @@ while ($linha = $produto->fetch_assoc()) {
     $_SESSION['produtos'][] = $linha;
 }
 
-header("Location: ../view/vi_checkout_html.php");
+header("Location: ../view/vi_tab_produtos_checkout_html.php");
 exit();
 ?>

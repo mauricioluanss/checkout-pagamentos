@@ -1,16 +1,14 @@
 <?php
 /**
- * Esse script starta a partir de 'vi_pagamento_html.php'.
- * Ele recupera dados das variáveis de sessão de 'vi_checkout_html.php' e 'ct_checkout.php'.
- * Ele vai realiza o insert da transação na tabela 'transacoes' e também vai fazer insert na
- * tabela 'itens_transacao' de cada item, relacionando com a transação correspondete.
+ * O script recupera dados das variáveis de sessão de e realiza o insert da transação na tabela 'transacoes',
+ * e também vai fazer insert na tabela 'itens_transacao' de cada item, relacionando com a transação correspondete.
  */
 session_start();
 
 /**
  * Esse bloco cria uma variavel de sessão e redireciona para a página de checkout caso se tente
  * finalizar uma venda com o carrinho vazio. A variavel 'erro_carrinho' só serve como referência
- * para validação na outra página (vi_checkout_html.php).*/
+ * para validação na outra página*/
 if (!isset($_SESSION['produtos']) || count($_SESSION['produtos']) == 0) {
     $_SESSION['erro_carrinho'] = "";
     header("Location: ../view/vi_checkout_html.php");
