@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     // isso aqui vai inserir o valor total de uma transação e método de pagamento na tavela 'transacoes'.
-    require_once("../conf/config.php");
+    require_once('../conf/conexao_db.php');
     $conexao->query("INSERT INTO transacoes (total, metodo_pagamento) VALUES ('$total', '$metodo')");
     $idTransacao = $conexao->insert_id;
 

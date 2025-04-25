@@ -119,7 +119,7 @@ if (isset($_SESSION['erro_carrinho'])) {
         <tbody>
           <!-- Consulta no banco pra jogar os produtos dentro da tabela de consulta. -->
           <?php
-          require_once("../conf/config.php");
+          require_once('../conf/conexao_db.php');
           $todos_produtos = $conexao->query("SELECT id, produto, preco FROM produtos ORDER BY id");
   
           while ($produto = $todos_produtos->fetch_assoc()) {
@@ -188,7 +188,7 @@ if (isset($_SESSION['erro_carrinho'])) {
     </div>
 
     <!-- Botão pra enviar o valor total para página de pagamento 'vi_pagamento_html.php'. -->
-    <form action="../view/vi_pagamento_html.php" method="post">
+    <form action="../view/vi_form_pagamento_html.php" method="post">
       <input type="hidden" name="total" value="<?php echo $total; ?>">
       <button id="pagar" type="submit">Finalizar</button>
     </form>
@@ -198,7 +198,7 @@ if (isset($_SESSION['erro_carrinho'])) {
       <button type="submit" id="logout">Logoff</button>
     </form>
 
-    <form action="vi_cadastro_produtos_html.php" method="post">
+    <form action="vi_form_cadastro_produtos_html.php" method="post">
       <button type="submit" id="cadastro_produtos">Cadastrar produtos</button>
     </form>
   </div>

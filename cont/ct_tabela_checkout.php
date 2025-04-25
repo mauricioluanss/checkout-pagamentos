@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once("../conf/config.php");
+require_once('../conf/conexao_db.php');
 
 
   $produto = $conexao->query("SELECT id, produto, preco FROM produtos ORDER BY id");

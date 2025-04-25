@@ -8,7 +8,7 @@
 $email = $_POST['email'];
 
 // realiza a consulta no banco pra verificar se o email informado está na base.
-require_once('../conf/config.php');
+require_once('../conf/conexao_db.php');
 $verificacao = $conexao->query("SELECT * FROM usuarios WHERE email='$email'");
 
 // função para realizar a criação da nova senha e salva-la no banco.
@@ -19,7 +19,7 @@ function gerarSenhaAleatoria($conexao, $email)
 	echo "
 			<script>
 				alert('Sua senha temporária é: $senha. Voltando para a tela de login.');
-				window.location.href = '../login.html';
+				window.location.href = '../index.html';
 			</script>";
 }
 
@@ -31,7 +31,7 @@ if ($verificacao->num_rows > 0) {
 	echo "
 			<script>
 				alert('O $email não foi encontrado na base de dados.');
-				window.location.href = '../view/vi_recuperar_senha.html'
+				window.location.href = '../view/vi_form_recuperar_senha.html'
 			</script>";
 }
 

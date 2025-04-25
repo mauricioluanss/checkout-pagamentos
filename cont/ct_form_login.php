@@ -10,7 +10,7 @@ $password = $_POST["password"];
 
 // realiza uma consulta no banco e valida se o email e a senha informadas batem com o registro no banco.
 // salva a consulta em $resultado.
-require_once('../conf/config.php');
+require_once('../conf/conexao_db.php');
 $resultado = $conexao->query("SELECT * FROM usuarios WHERE email='$email' AND senha='$password'");
 
 // faz a validação da consulta.
@@ -23,7 +23,7 @@ if ($resultado->num_rows > 0) {
 } else {
   echo "<script>
               alert('Email ou senha incorretos!');
-              window.location.href = '../login.html';
+              window.location.href = '../index.html';
           </script>";
 }
 

@@ -1,9 +1,18 @@
 <!DOCTYPE html>
+<?php
+  if (!isset($_SESSION)) {
+    session_start();
+  }
+  if (!isset($_SESSION["usuario"])) {
+    header("location:index.php");
+  }
+?>
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RECUPERAR SENHA</title>
+    <title>CADASTRAR PRODUTOS</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -21,40 +30,35 @@
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         width: 100%;
-        max-width: 450px;
-        text-align: center;
+        max-width: 400px;
       }
 
       h2 {
+        text-align: center;
         color: #333;
-        margin-bottom: 15px;
-      }
-
-      .form-group {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        margin-bottom: 15px;
       }
 
       label {
         font-size: 14px;
         color: #555;
+        margin-bottom: 5px;
+        display: block;
       }
 
       input {
-        flex: 1;
+        width: 100%;
         padding: 10px;
+        margin: 10px 0;
         border: 1px solid #ddd;
         border-radius: 4px;
+        box-sizing: border-box;
         font-size: 14px;
       }
 
       button {
         width: 100%;
         padding: 12px;
-        background-color: #65e62a;
+        background-color: #28a745;
         border: none;
         color: white;
         font-size: 16px;
@@ -64,19 +68,22 @@
       }
 
       button:hover {
-        background-color: #60bd14;
+        background-color: #218838;
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <form id="recuperacao_senha" action="../cont/ct_recuperar_senha.php" method="post">
-        <h2>Recuperação de Senha</h2>
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" id="email" placeholder="Digite o e-mail cadastrado" name="email" required/>
-        </div>
-        <button type="submit">Enviar</button>
+    <!-- Formulario pra cadastrar os produtos no banco via browser. -->
+      <form id="cadastro" action="../cont/ct_form_cadastro_produtos.php" method="post">
+        <h2>CADASTRO DE PRODUTOS</h2>
+        <label for="produto">Produto:</label>
+        <input type="text" name="produto" id="produto" required />
+        <label for="qtd">Qtd:</label>
+        <input type="number" name="qtd" id="qtd" required />
+        <label for="preco">Preço:</label>
+        <input type="text" name="preco" id="preco" required />
+        <button type="submit" id="botao">CADASTRAR</button>
       </form>
     </div>
   </body>

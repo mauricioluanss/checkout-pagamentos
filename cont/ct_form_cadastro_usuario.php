@@ -10,7 +10,7 @@ $email = $_POST["email"];
 $password = $_POST["senha"];
 
 // validação no banco do email.
-require_once('../conf/config.php');
+require_once('../conf/conexao_db.php');
 $verificacao = $conexao->query("SELECT * FROM usuarios WHERE email='$email'");
 
 // bloco pra validar se existe registro do email no banco.
@@ -19,7 +19,7 @@ $verificacao = $conexao->query("SELECT * FROM usuarios WHERE email='$email'");
 if ($verificacao->num_rows > 0) {
   echo "<script>
           alert('Email já existe na base dados!');
-          window.location.href='../view/vi_cadastro_usuario.html';
+          window.location.href='../view/vi_form_cadastro_usuario.html';
         </script>";
 } else {
   $input = $conexao->query("INSERT INTO usuarios (nome, email, senha) VALUES ('$nome', '$email', '$password')");
@@ -28,12 +28,12 @@ if ($verificacao->num_rows > 0) {
   if ($input) {
     echo "<script>
           alert('Cadastro realizado! Voltando para página de login.');
-          window.location.href='../login.html';
+          window.location.href='../index.html';
           </script>";
   } else {
     echo "<script>
             alert('Erro ao cadastrar: " . $conexao->error . "');
-            window.location.href='../view/vi_cadastro_usuario.html';
+            window.location.href='../view/vi_form_cadastro_usuario.html';
           </script>";
   }
 }

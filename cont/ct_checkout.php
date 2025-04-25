@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $id = $_POST['id'];
 }
 
-require_once("../conf/config.php");
+require_once('../conf/conexao_db.php');
 $produto = $conexao->query("SELECT * FROM produtos WHERE id='$id'");
 
 if (!isset($_SESSION['produtos'])) {

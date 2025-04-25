@@ -101,15 +101,15 @@ if (!isset($_SESSION["usuario"])) {
     <!-- Botões com métodos de pagamentos que chamam a página de conclusão 'vi_venda_concluida_html.php'. -->
     <div class="metodos_pagamento">
       <h3>MÉTODOS DE PAGAMENTO</h3>
-      <form action="../cont/ct_registra_pagamento.php" method="post">
+      <form action="../cont/ct_form_pagamento.php" method="post">
         <input type="hidden" name="metodo_pagamento" value="Débito">
         <button type="submit">1 - DÉBITO</button>
       </form>
-      <form action="../cont/ct_registra_pagamento.php" method="post">
+      <form action="../cont/ct_form_pagamento.php" method="post">
         <input type="hidden" name="metodo_pagamento" value="Crédito à vista">
         <button type="submit">2 - CRÉDITO (vista)</button>
       </form>
-      <form action="../cont/ct_registra_pagamento.php" method="post">
+      <form action="../cont/ct_form_pagamento.php" method="post">
         <input type="hidden" name="metodo_pagamento" value="PIX">
         <button type="submit">3 - PIX</button>
       </form>
