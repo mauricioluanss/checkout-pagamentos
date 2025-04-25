@@ -65,6 +65,7 @@
         cursor: pointer;
         border-radius: 4px;
         transition: background-color 0.3s;
+        margin: 5px;
       }
 
       button:hover {
@@ -85,6 +86,9 @@
         <input type="text" name="preco" id="preco" required />
         <button type="submit" id="botao">CADASTRAR</button>
       </form>
+      <form action="vi_tab_produtos_checkout_html.php" method="post">
+          <button type="submit" id="voltar">Voltar</button>
+        </form>
     </div>
   </body>
 </html>

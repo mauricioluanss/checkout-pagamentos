@@ -73,6 +73,7 @@ if (isset($_SESSION['erro_carrinho'])) {
       background-color: #d9dfe6;
       cursor: pointer;
       font-size: 16px;
+      margin: 2px;
     }
 
     button:hover {
