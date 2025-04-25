@@ -11,7 +11,7 @@ session_start();
  * para validação na outra página*/
 if (!isset($_SESSION['produtos']) || count($_SESSION['produtos']) == 0) {
     $_SESSION['erro_carrinho'] = "";
-    header("Location: ../view/vi_checkout_html.php");
+    header("Location: ../view/vi_tab_produtos_checkout_html.php");
     exit();
 }
 
