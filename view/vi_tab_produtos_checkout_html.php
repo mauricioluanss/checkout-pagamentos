@@ -5,17 +5,22 @@ if (!isset($_SESSION)) {
 }
 
 if (!isset($_SESSION["usuario"])) {
-  header("location:index.php");
+  header("Location: index.php");
 }
 
-// Esse bloco valida se a variável de sessão abaixo existe. Caso sim, executa o alert.
-// a lógica do motivo para esse bloco está em 'ct_form_pagamento.php'.
-if (isset($_SESSION['erro_carrinho'])) {
+// Aciona o script que busca todos os produtos no banco.
+if (!isset($_SESSION["todos_produtos"])) {
+  header('Location: ../cont/ct_tab_consulta_produtos_checkout.php');
+  exit();
+}
+
+// Exibe alerta se for tentado finalizar uma venda com carrinho vazio.
+if (isset($_GET['carrinho_vazio']) && $_GET['carrinho_vazio'] == '1') {
   echo "<script>alert('Carrinho vazio! Adicione produtos antes de finalizar.');</script>";
-  unset($_SESSION['erro_carrinho']);
 }
 ?>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,7 +34,7 @@ if (isset($_SESSION['erro_carrinho'])) {
       justify-content: center;
       align-items: center;
       height: 100%;
-      /*até eu descobrir que esse era o problema das tabelas não estarem cabendo na página... :(*/
+      /*até eu descobrir que esse era o problema das tabelas não estarem cabendo na página... :( */
       background-color: #f4f4f4;
     }
 
@@ -118,29 +123,17 @@ if (isset($_SESSION['erro_carrinho'])) {
           </tr>
         </thead>
         <tbody>
-          <!-- Consulta no banco pra jogar os produtos dentro da tabela de consulta. -->
+          <!-- Cria a tabela na tela com todos os produtos que foram passados para a variavel de sessão
+           em 'ct_tab_consulta_produtos_checkout.php'. -->
           <?php
-          require_once('../conf/conexao_db.php');
-          $todos_produtos = $conexao->query("SELECT id, produto, preco FROM produtos ORDER BY id");
-  
-          while ($produto = $todos_produtos->fetch_assoc()) {
+          foreach ($_SESSION['todos_produtos'] as $produto) {
             echo "
                   <tr>
-                      <td>{$produto['id']}</td>
-                      <td>{$produto['produto']}</td>
-                      <td>R$ " . number_format($produto['preco'], 2, ',', '.') . "</td>
+                    <td>{$produto['id']}</td>
+                    <td>{$produto['produto']}</td>
+                    <td>R$ " . number_format($produto['preco'], 2, ',', '.') . "</td>
                   </tr>";
           }
-          /* if (isset($_SESSION['todos_produtos'])) {
-            foreach ($_SESSION['todos_produtos'] as $x) {
-              echo "
-                  <tr>
-                      <td>{$x['id']}</td>
-                      <td>{$x['produto']}</td>
-                      <td>R$ " . number_format($x['preco'], 2, ',', '.') . "</td>
-                  </tr>";
-            }
-          } */
           ?>
         </tbody>
       </table>
@@ -161,14 +154,14 @@ if (isset($_SESSION['erro_carrinho'])) {
         $total = 0;
 
         if (isset($_SESSION['produtos'])) {
-          foreach ($_SESSION['produtos'] as $i) {
+          foreach ($_SESSION['produtos'] as $produto) {
             echo "
                   <tr>
-                      <td>{$i['id']}</td>
-                      <td>{$i['produto']}</td>
-                      <td>R$ " . number_format($i['preco'], 2, ',', '.') . "</td>
+                      <td>{$produto['id']}</td>
+                      <td>{$produto['produto']}</td>
+                      <td>R$ " . number_format($produto['preco'], 2, ',', '.') . "</td>
                   </tr>";
-            $total += $i['preco'];
+            $total += $produto['preco'];
           }
         }
         ?>
@@ -193,7 +186,7 @@ if (isset($_SESSION['erro_carrinho'])) {
       <button id="pagar" type="submit">Finalizar</button>
     </form>
 
-      <!-- Botão de logoff -->
+    <!-- Botão de logoff -->
     <form action="../cont/ct_logout.php" method="post">
       <button type="submit" id="logout">Logoff</button>
     </form>
@@ -203,4 +196,5 @@ if (isset($_SESSION['erro_carrinho'])) {
     </form>
   </div>
 </body>
+
 </html>

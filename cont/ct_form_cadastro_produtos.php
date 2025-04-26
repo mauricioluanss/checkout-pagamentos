@@ -2,7 +2,6 @@
 /**
  * Script para cadastro dos produtos no banco de dados. Além de cadastrar, ele também
  * atualiza a quantidade do produto, se ele ja existir na base.
- * Este script será acioando pelo formulário do 'vi_cadastro_produtos_html.php'.
  */
 
 // bloco de validação se existe sessão de login aberta.

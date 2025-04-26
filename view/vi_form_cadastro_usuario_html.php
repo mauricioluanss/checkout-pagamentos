@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <?php
-if (!isset($_SESSION)) {
-  session_start();
-}
-if (!isset($_SESSION["usuario"])) {
-  header("location:index.php");
+// Exibe um alerta se o email para cadastro já existir na base de dados.
+if (isset($_GET['email_repetido']) && $_GET['email_repetido'] == 1) {
+  echo "<script>alert('Email já existe na base dados!');</script>";
 }
 ?>
 <html lang="pt-br">
@@ -13,7 +11,7 @@ if (!isset($_SESSION["usuario"])) {
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CADASTRAR PRODUTOS</title>
+  <title>CADASTRO USUÁRIO</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -66,7 +64,6 @@ if (!isset($_SESSION["usuario"])) {
       cursor: pointer;
       border-radius: 4px;
       transition: background-color 0.3s;
-      margin: 5px;
     }
 
     button:hover {
@@ -77,21 +74,33 @@ if (!isset($_SESSION["usuario"])) {
 
 <body>
   <div class="container">
-    <!-- Formulario pra cadastrar os produtos no banco via browser. -->
-    <form id="cadastro" action="../cont/ct_form_cadastro_produtos.php" method="post">
-      <h2>CADASTRO DE PRODUTOS</h2>
-      <label for="produto">Produto:</label>
-      <input type="text" name="produto" id="produto" required />
-      <label for="qtd">Qtd:</label>
-      <input type="number" name="qtd" id="qtd" required />
-      <label for="preco">Preço:</label>
-      <input type="text" name="preco" id="preco" required />
-      <button type="submit" id="botao">CADASTRAR</button>
-    </form>
-    <form action="vi_tab_produtos_checkout_html.php" method="post">
-      <button type="submit" id="voltar">Voltar</button>
+    <!-- Só envia o form se a função retornar 'true'-->
+    <form id="cadastro" action="../cont/ct_form_cadastro_usuario.php" method="post" onsubmit="return verificaSenha()">
+      <h2>CADASTRO DE USUÁRIO</h2>
+      <label for="name">Nome:</label>
+      <input type="text" id="name" name="name" required />
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" required />
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" name="senha" required />
+      <label for="senha_confirma">Confirma senha:</label>
+      <input type="password" id="senha_confirma" name="senha_confirma" required />
+      <button type="submit" id="cadastrar">CADASTRAR</button>
     </form>
   </div>
+  <script>
+    // Função pra validar se as senhas digitadas são iguais.
+    function verificaSenha() {
+      let senha = document.getElementById("senha").value;
+      let senha_confirma = document.getElementById("senha_confirma").value;
+
+      if (senha !== senha_confirma) {
+        alert("As senhas não conferem.");
+        return false;
+      }
+      return true;
+    }
+  </script>
 </body>
 
 </html>

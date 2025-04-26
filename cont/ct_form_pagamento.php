@@ -3,15 +3,14 @@
  * O script recupera dados das variáveis de sessão de e realiza o insert da transação na tabela 'transacoes',
  * e também vai fazer insert na tabela 'itens_transacao' de cada item, relacionando com a transação correspondete.
  */
-session_start();
 
 /**
- * Esse bloco cria uma variavel de sessão e redireciona para a página de checkout caso se tente
- * finalizar uma venda com o carrinho vazio. A variavel 'erro_carrinho' só serve como referência
- * para validação na outra página*/
+ * Se a sessão não estiver iniciada ou estiver vazia (carrinho vazio), redireciona para a página de checkout
+ * onde será exibida uma mensagem de erro.
+ */
+session_start();
 if (!isset($_SESSION['produtos']) || count($_SESSION['produtos']) == 0) {
-    $_SESSION['erro_carrinho'] = "";
-    header("Location: ../view/vi_tab_produtos_checkout_html.php");
+    header("Location: ../view/vi_tab_produtos_checkout_html.php?carrinho_vazio=1");
     exit();
 }
 
@@ -32,18 +31,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $idTransacao = $conexao->insert_id;
 
     // insere os produtos na tabela 'itens_transacao' e relaciona com o id da transacao corespondete, como chave estrangeira.
-    $stmtItem = $conexao->prepare("INSERT INTO itens_transacao (id_transacao, id_produto, produto_nome, preco_unitario) VALUES (?, ?, ?, ?)");
+    $insercao = $conexao->prepare("INSERT INTO itens_transacao (id_transacao, id_produto, produto_nome, preco_unitario) VALUES (?, ?, ?, ?)");
     foreach ($produtos as $produto) {
-        $stmtItem->bind_param("iisd", $idTransacao, $produto["id"], $produto["produto"], $produto["preco"]);
-        $stmtItem->execute();
+        $insercao->bind_param("iisd", $idTransacao, $produto["id"], $produto["produto"], $produto["preco"]);
+        $insercao->execute();
     }
-    $stmtItem->close();
-
-    // limpa a  sessão de produtos
+    $insercao->close();
     unset($_SESSION["produtos"]);
 
-    // redireciona para tela de confirmação de venda.
-    header("Location: ../view/vi_venda_concluida_html.php");
+    header("Location: ../view/vi_venda_concluida.html");
     exit();
 } else {
     echo "Requisição inválida.";

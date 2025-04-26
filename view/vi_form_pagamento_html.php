@@ -86,19 +86,18 @@ if (!isset($_SESSION["usuario"])) {
     <div class="valor">
       <h2>VALOR A PAGAR:</h2>
       <h3>
-        <!-- tras o valor total dos produtos da pagina de checkout.-->
+        <!-- puxa o valor total dos produtos da pagina de checkout.-->
         R$ <?php
-            if (isset($_POST['total'])) {
-              echo number_format($_POST['total'], 2, ',', '.');
-            } else {
-              echo '0,00';
-            }
-            ?>
+        if (isset($_POST['total'])) {
+          echo number_format($_POST['total'], 2, ',', '.');
+        } else {
+          echo '0,00';
+        }
+        ?>
       </h3>
-
     </div>
-    
-    <!-- Botões com métodos de pagamentos que chamam a página de conclusão 'vi_venda_concluida_html.php'. -->
+
+    <!-- Botões com métodos de pagamentos. -->
     <div class="metodos_pagamento">
       <h3>MÉTODOS DE PAGAMENTO</h3>
       <form action="../cont/ct_form_pagamento.php" method="post">
@@ -114,7 +113,6 @@ if (!isset($_SESSION["usuario"])) {
         <button type="submit">3 - PIX</button>
       </form>
     </div>
-  </div>
 </body>
 
 </html>

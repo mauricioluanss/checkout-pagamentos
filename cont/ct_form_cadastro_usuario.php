@@ -1,40 +1,35 @@
 <?php
 /**
- * Script para realizar o cadastro de usuários no banco. É ativado pelo
- * 'vi_cadastro_usuario.html'.
+ * Script para realizar o cadastro de usuários.
  */
 
-// dados eviados do formulário.
 $nome = $_POST["name"];
 $email = $_POST["email"];
 $password = $_POST["senha"];
 
-// validação no banco do email.
+/**
+ * Bloco pra validar se existe registro do email no banco. Se houver, avisa que já
+ * existe e volta pra pagina de recuepração. Se nao houver, executa a query pra cadastrar
+ * o usuário.
+ */
 require_once('../conf/conexao_db.php');
 $verificacao = $conexao->query("SELECT * FROM usuarios WHERE email='$email'");
 
-// bloco pra validar se existe registro do email no banco.
-// se houver, avisa que existe usuário e volta pra pagina de login.
-// se nao houver, executa a query pra cadastrar o usuário.
 if ($verificacao->num_rows > 0) {
-  echo "<script>
-          alert('Email já existe na base dados!');
-          window.location.href='../view/vi_form_cadastro_usuario.html';
-        </script>";
+    header("Location: ../view/vi_form_cadastro_usuario_html.php?email_repetido=1");
+    exit();
 } else {
-  $input = $conexao->query("INSERT INTO usuarios (nome, email, senha) VALUES ('$nome', '$email', '$password')");
-  // se a query retornar sucesso, exibe para o usuário e volta pra pagina de login.
-  // senão, mostra o erro 
-  if ($input) {
-    echo "<script>
-          alert('Cadastro realizado! Voltando para página de login.');
-          window.location.href='../index.html';
-          </script>";
-  } else {
-    echo "<script>
+    $input = $conexao->query("INSERT INTO usuarios (nome, email, senha) VALUES ('$nome', '$email', '$password')");
+    if ($input) {
+        header("Location: ../index.php?cadastro=1");
+        exit();
+    } else {
+        echo "
+        <script>
             alert('Erro ao cadastrar: " . $conexao->error . "');
-            window.location.href='../view/vi_form_cadastro_usuario.html';
-          </script>";
-  }
+            window.location.href='../view/vi_form_cadastro_usuario_html.php';
+        </script>";
+    }
 }
+$conexao->close();
 ?>
