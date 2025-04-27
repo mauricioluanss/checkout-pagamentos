@@ -1,15 +1,11 @@
 <?php
-
 /**
  * Script para realizar a lógica de login / autenticação do usuário, no banco de dados.
  */
-
-// recebe os valores dos input 'email' e 'password', do formulario.
 $email = $_POST["email"];
 $password = $_POST["password"];
 
-// realiza uma consulta no banco e valida se o email e a senha informadas batem com o registro no banco.
-// salva a consulta em $resultado.
+// consulta as crenciais do usuário.
 require_once('../conf/conexao_db.php');
 $resultado = $conexao->query("SELECT * FROM usuarios WHERE email='$email' AND senha='$password'");
 

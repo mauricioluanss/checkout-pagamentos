@@ -1,3 +1,7 @@
+/*
+    Script para criar o banco de dados e as tabelas necessárias para o sistema.
+    Só copiar e colar no phpmyadmin.
+*/
 CREATE DATABASE db_pagamento;
 
 USE db_pagamento;

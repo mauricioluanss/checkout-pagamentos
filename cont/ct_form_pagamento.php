@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $insercao->close();
     unset($_SESSION["produtos"]);
 
-    header("Location: ../view/vi_venda_concluida.html");
+    header("Location: ../view/vi_venda_concluida_html.php");
     exit();
 } else {
     echo "Requisição inválida.";

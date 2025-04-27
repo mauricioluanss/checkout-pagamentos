@@ -6,7 +6,20 @@ if (!isset($_SESSION)) {
 if (!isset($_SESSION["usuario"])) {
   header("location:index.php");
 }
+// alerta se foi atualizado um produto ou cadastrado um produto novo.
+if (isset($_GET['produto_atualizado'])) {
+  if ($_GET['produto_atualizado'] == 1) {
+    echo "<script>alert('Produto já existente na base.\\nSomada a quantidade deste produto na base.');</script>";
+  } else if ($_GET['produto_atualizado'] == 0) {
+    echo "<script>alert('Produto cadastrado na base de dados.\\nVoltando para a tela de cadastro...');</script>";
+  }
+}
+// alerta se a quantidade do produto informada for menor que 1.
+if (isset($_GET['qtd_invalida']) && $_GET['qtd_invalida'] == 0) {
+  echo "<script>alert('Quantidade não pode ser menor que 1.');</script>";
+}
 ?>
+
 <html lang="pt-br">
 
 <head>

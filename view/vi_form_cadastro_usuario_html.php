@@ -4,6 +4,10 @@
 if (isset($_GET['email_repetido']) && $_GET['email_repetido'] == 1) {
   echo "<script>alert('Email já existe na base dados!');</script>";
 }
+// se houver erro na query de cadastro, exibe a descrição do erro.
+if (isset($_GET['erro'])) {
+  echo "Erro: " . $_GET['erro'];
+}
 ?>
 <html lang="pt-br">
 

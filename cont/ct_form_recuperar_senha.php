@@ -2,7 +2,6 @@
 /**
  * Script para realizar a recuperação de senha do usuário. Ele gera uma senha aleatória.
  */
-
 $email = $_POST['email'];
 
 // realiza a consulta no banco pra verificar se o email informado está na base.

@@ -1,10 +1,8 @@
 <?php
 /**
  * Script para cadastro dos produtos no banco de dados. Além de cadastrar, ele também
- * atualiza a quantidade do produto, se ele ja existir na base.
+ * atualiza a quantidade do produto se ele ja existir na base.
  */
-
-// bloco de validação se existe sessão de login aberta.
 if (!isset($_SESSION)) {
   session_start();
 }
@@ -21,27 +19,23 @@ $preco = $_POST['preco'];
 require_once('../conf/conexao_db.php');
 $verificacao = $conexao->query("SELECT * FROM produtos WHERE produto='$produto'");
 
-// bloco de validações -> se a quantidade for menor que um, não cadastra nada.
-// Se houver registro do produto no banco, a quantidade dele será atualizada.
-// se não houver, ele cadastra o produto na base.
+/**
+ * Bloco para validação.
+ * Se houver o produto na base, ele soma a quantidade do produto. Se não houver,
+ * cria o produto. Se a quantidade for menor que 1, ele retorna para o formulário.
+ */
 if ($quantidade > 0) {
   if ($verificacao->num_rows > 0) {
     $conexao->query("UPDATE produtos SET quantidade=quantidade + $quantidade WHERE produto='$produto'");
-    echo "<script>
-            alert('Produto: $produto já existente na base.\\nAtualizado apenas a quantidade deste produto na base.');
-            window.location.href = '../view/vi_form_cadastro_produtos_html.php';
-          </script>";
+    header("location:../view/vi_form_cadastro_produtos_html.php?produto_atualizado=1");
+    exit();
   } else {
-    $input = $conexao->query("INSERT INTO produtos (produto, quantidade, preco) VALUES ('$produto', '$quantidade', '$preco')");
-    echo "<script>
-            alert('Produto $produto cadastrado na base de dados.\\nVoltando para a tela de cadastro...');
-            window.location.href = '../view/vi_form_cadastro_produtos_html.php';
-          </script>";
+    $conexao->query("INSERT INTO produtos (produto, quantidade, preco) VALUES ('$produto', '$quantidade', '$preco')");
+    header("location:../view/vi_form_cadastro_produtos_html.php?produto_atualizado=0");
+    exit();
   }
 } else {
-  echo "<script>
-          alert('Quantidade não pode ser menor que 1.');
-          window.location.href='../view/vi_form_cadastro_produtos_html.php';
-        </script>";
+  header("location:../view/vi_form_cadastro_produtos_html.php?qtd_invalida=0");
+  exit();
 }
 ?>
