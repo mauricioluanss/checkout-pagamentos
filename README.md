@@ -16,3 +16,7 @@ Sistema de caixa para estabelecimentos comerciais.
 - Filtro para busca do produto no db.
 - Registro dinâmico de transação no db.
 - Registro dinâmico dos produtos vendidos e atualização da quantidade no db.
+
+## Executando...
+Simulei o uso com produtos de farmácia.
+![execucao](gif.gif)
