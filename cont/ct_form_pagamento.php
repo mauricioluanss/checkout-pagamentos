@@ -14,6 +14,15 @@ if (!isset($_SESSION['produtos']) || count($_SESSION['produtos']) == 0) {
     exit();
 }
 
+/**
+ * vou inserir aqui a chamada dos metodos para o chekout payer.
+ * vai ficar em /cont/api
+ */
+/* if (!isset($_SESSION["api"]))
+    header("location: api/ct_api_metodos_pagamento.php"); */
+
+
+
 // Validação se o verbo da requisição é post. Se sim, entra no bloco da lógica.
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $metodo = $_POST["metodo_pagamento"];
@@ -39,7 +48,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $insercao->close();
     unset($_SESSION["produtos"]);
 
-    header("Location: ../view/vi_venda_concluida_html.php");
+    $totalzao = $_POST['total'];
+    require_once("api/ct_api_metodos_pagamento.php");
+    chamaTransacao($totalzao);
+
+    //header("Location: ../view/vi_venda_concluida_html.php");
     exit();
 } else {
     echo "Requisição inválida.";
