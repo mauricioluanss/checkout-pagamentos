@@ -101,7 +101,7 @@ if (!isset($_SESSION["usuario"])) {
     <div class="metodos_pagamento">
       <h3>MÉTODOS DE PAGAMENTO</h3>
       <form action="../cont/ct_form_pagamento.php" method="post">
-        <input type="hidden" name="metodo_pagamento" value="Débito">
+        <input type="hidden" name="metodo_pagamento" value="debito">
         <button type="submit">1 - DÉBITO</button>
       </form>
       <form action="../cont/ct_form_pagamento.php" method="post">

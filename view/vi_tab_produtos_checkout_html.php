@@ -163,6 +163,7 @@ if (isset($_GET['carrinho_vazio']) && $_GET['carrinho_vazio'] == '1') {
                   </tr>";
             $total += $produto['preco'];
           }
+          $_SESSION['totalzao'] = $total;
         }
         ?>
       </tbody>

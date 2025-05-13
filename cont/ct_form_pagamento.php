@@ -13,6 +13,13 @@ if (!isset($_SESSION['produtos']) || count($_SESSION['produtos']) == 0) {
     header("Location: ../view/vi_tab_produtos_checkout_html.php?carrinho_vazio=1");
     exit();
 }
+/**
+ * Aqui eu chamo a funcao que faz as requisições pra chamar a payer
+ */
+require_once("api/ct_api_metodos_pagamento.php");
+if (isset($_POST['metodo_pagamento']) && $_POST['metodo_pagamento'] === "debito") {
+    chamaTransacao($_SESSION['totalzao']);
+}
 
 // Validação se o verbo da requisição é post. Se sim, entra no bloco da lógica.
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
