@@ -1,6 +1,6 @@
 <?php
 
-function chamaTransacao($value)
+function chamaTransacao($value, $paymentType)
 {
     $url = "http://localhost:6060/Client/request";
 
@@ -9,7 +9,7 @@ function chamaTransacao($value)
         'value' => $value,
         'idPayer' => '00010001',
         'paymentMethod' => 'CARD',
-        'paymentType' => 'DEBIT',
+        'paymentType' => $paymentType,
         'paymentMethodSubType' => 'FULL_PAYMENT'
     ];
 

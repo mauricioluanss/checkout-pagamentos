@@ -18,7 +18,11 @@ if (!isset($_SESSION['produtos']) || count($_SESSION['produtos']) == 0) {
  */
 require_once("api/ct_api_metodos_pagamento.php");
 if (isset($_POST['metodo_pagamento']) && $_POST['metodo_pagamento'] === "debito") {
-    chamaTransacao($_SESSION['totalzao']);
+    chamaTransacao($_SESSION['totalzao'], "DEBIT");
+}
+
+if (isset($_POST['metodo_pagamento']) && $_POST['metodo_pagamento'] === "credito") {
+    chamaTransacao($_SESSION['totalzao'], "CREDIT");
 }
 
 // Validação se o verbo da requisição é post. Se sim, entra no bloco da lógica.
