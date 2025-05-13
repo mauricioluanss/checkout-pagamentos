@@ -8,6 +8,7 @@ if (!isset($_SESSION)) {
 }
 if (!isset($_SESSION["usuario"])) {
   header("location:index.php");
+  
 }
 
 // import dos valores enviados pelo formulário lá do html.
