@@ -2,16 +2,16 @@
 /**
  * Script para adicionar produtos ao carrinho de compras por meio do ID.
  */
-
-$id = $_POST['id'];
-
 require_once('../conf/conexao_db.php');
-$produto = $conexao->query("SELECT * FROM produtos WHERE id='$id'");
 
 session_start();
 if (!isset($_SESSION['produtos'])) {
     $_SESSION['produtos'] = [];
 }
+
+$id = $_POST['id'];
+
+$produto = $conexao->query("SELECT * FROM produtos WHERE id='$id'");
 
 while ($linha = $produto->fetch_assoc()) {
     $_SESSION['produtos'][] = $linha;

@@ -1,13 +1,12 @@
 <?php
 /**
- * Script para consultar todos os produtos no banco e salvar numa variável de sessão.
- * Essa variável será utilizada na página de checkout para exibir todos os produtos dentro
- * de uma tabela.
+ * Script para para exibir todos os produtos dentro de uma tabela, na página de checkout.
  */
+require_once('../conf/conexao_db.php');
+
 session_start();
 $_SESSION['todos_produtos'] = [];
 
-require_once('../conf/conexao_db.php');
 $resultado = $conexao->query("SELECT id, produto, preco FROM produtos ORDER BY id");
 
 if ($resultado) {

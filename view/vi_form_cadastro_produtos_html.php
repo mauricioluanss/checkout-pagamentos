@@ -3,7 +3,7 @@
 if (!isset($_SESSION)) {
   session_start();
 }
-if (!isset($_SESSION["usuario"])) {
+if (!isset($_SESSION['usuario_logado'])) {
   header("location:index.php");
 }
 // alerta se foi atualizado um produto ou cadastrado um produto novo.

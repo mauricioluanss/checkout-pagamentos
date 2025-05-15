@@ -3,7 +3,7 @@
 if (!isset($_SESSION)) {
   session_start();
 }
-if (!isset($_SESSION["usuario"])) {
+if (!isset($_SESSION['usuario_logado'])) {
   header("location:index.php");
 }
 ?>
@@ -68,15 +68,6 @@ if (!isset($_SESSION["usuario"])) {
 
     button:hover {
       background-color: #65e62a;
-    }
-
-    #cancelamento {
-      background-color: #ff4d4d;
-      color: white;
-    }
-
-    #cancelamento:hover {
-      background-color: #cc0000;
     }
   </style>
 </head>

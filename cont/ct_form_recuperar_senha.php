@@ -2,10 +2,11 @@
 /**
  * Script para realizar a recuperação de senha do usuário. Ele gera uma senha aleatória.
  */
+require_once('../conf/conexao_db.php');
+
 $email = $_POST['email'];
 
 // realiza a consulta no banco pra verificar se o email informado está na base.
-require_once('../conf/conexao_db.php');
 $verificacao = $conexao->query("SELECT * FROM usuarios WHERE email='$email'");
 
 // função para realizar a criação da nova senha e atualizar no banco.
